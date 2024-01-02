@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "liku"
+version = "0.1.0"
+description = ""
+authors = ["Rendy Arya Kemal <renrror@gmail.com>"]
+readme = "README.md"
+packages = [{include = "liku"}]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+typing-extensions = "^4.9.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
