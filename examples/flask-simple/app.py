@@ -1,15 +1,13 @@
 import random
-from flask import Flask, Response
+from flask import Flask
 import liku as e
 from faker import Faker
+
+from liku.integrations.flask import component_response
 
 
 app = Flask(__name__)
 faker = Faker()
-
-
-def to_html(el: e.HTMLElement):
-    return Response(str(el), content_type="text/html")
 
 
 def GeneratedPost(n: int):
@@ -66,40 +64,40 @@ def Card(title: str, description: str):
 
 
 @app.get("/random")
+@component_response
 def random_post():
-    return to_html(GeneratedPost(random.randint(1, 10)))
+    return GeneratedPost(random.randint(1, 10))
 
 
 @app.get("/")
+@component_response
 def home():
-    return to_html(
-        Layout(
-            e.div(
-                props={"class_": "flex flex-col gap-4"},
-                children=[
-                    e.div(
-                        props={
-                            "class_": "flex flex-row gap-4 justify-between items-center"
-                        },
-                        children=[
-                            e.h1(
-                                props={"class_": "text-xl font-bold"},
-                                children="My Blog!",
-                            ),
-                            e.button(
-                                props={
-                                    "class_": "rounded-md px-4 py-2 border-blue-500 border",
-                                    "hx-get": "/random",
-                                    "hx-target": "#posts",
-                                    "hx-swap": "outerHTML",
-                                },
-                                children="Randomize Post",
-                            ),
-                        ],
-                    ),
-                    GeneratedPost(5),
-                ],
-            )
+    return Layout(
+        e.div(
+            props={"class_": "flex flex-col gap-4"},
+            children=[
+                e.div(
+                    props={
+                        "class_": "flex flex-row gap-4 justify-between items-center"
+                    },
+                    children=[
+                        e.h1(
+                            props={"class_": "text-xl font-bold"},
+                            children="My Blog!",
+                        ),
+                        e.button(
+                            props={
+                                "class_": "rounded-md px-4 py-2 border-blue-500 border",
+                                "hx-get": "/random",
+                                "hx-target": "#posts",
+                                "hx-swap": "outerHTML",
+                            },
+                            children="Randomize Post",
+                        ),
+                    ],
+                ),
+                GeneratedPost(5),
+            ],
         )
     )
 
