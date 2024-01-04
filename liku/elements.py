@@ -125,6 +125,11 @@ class HTMLElement[PropsType: TypedDict](ABC):
         return self.__str__()
 
 
+class Fragment[PropsType: TypedDict](HTMLElement[PropsType]):
+    def render(self):
+        return self.render_child()
+
+
 class GenericComponent[ElemPropsType: TypedDict]:
     """Wrapper for most web components to create class elements for each tag.
 
