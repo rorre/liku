@@ -152,7 +152,12 @@ class GenericComponent[ElemPropsType: TypedDict]:
 
         class Element(HTMLElement):
             def render(self):
-                return f"<{tag_name} {self.format_props()}>{self.render_child()}</{tag_name}>"
+                opening_tag = "<" + tag_name
+                if len(self.props) != 0:
+                    opening_tag += " " + self.format_props()
+                opening_tag += ">"
+
+                return f"{opening_tag}{self.render_child()}</{tag_name}>"
 
         Element.__name__ = tag_name
         return Element
