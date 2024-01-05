@@ -60,7 +60,7 @@ class HTMLElement[PropsType: TypedDict](ABC):
 
     def __init__(
         self,
-        props: PropsType | HTMLAttributes | dict[str, str] | None = None,
+        props: PropsType | HTMLAttributes | dict[str, str | int | bool] | None = None,
         children: "HTMLNode | None" = None,
         safe: bool = False,
     ):
@@ -78,7 +78,7 @@ class HTMLElement[PropsType: TypedDict](ABC):
 
     @abstractmethod
     def render(self) -> str:
-        raise NotImplementedError
+        raise NotImplementedError  # pragma: nocover
 
     def format_props(self):
         """Formats all props into html representation of them.
@@ -122,7 +122,7 @@ class HTMLElement[PropsType: TypedDict](ABC):
         return self.render()
 
     def __repr__(self):
-        return self.__str__()
+        return self.__str__()  # pragma: nocover
 
 
 class Fragment[PropsType: TypedDict](HTMLElement[PropsType]):
@@ -282,1137 +282,1137 @@ webview = GenericComponent[WebViewHTMLAttributes].create("webview")
 @overload
 def h(
     tag_name: Literal["a"],
-    props: AnchorHTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: AnchorHTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[AnchorHTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["abbr"],
-    props: HTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: HTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[HTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["address"],
-    props: HTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: HTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[HTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["area"],
-    props: AreaHTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: AreaHTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[AreaHTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["article"],
-    props: HTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: HTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[HTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["aside"],
-    props: HTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: HTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[HTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["audio"],
-    props: AudioHTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: AudioHTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[AudioHTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["b"],
-    props: HTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: HTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[HTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["base"],
-    props: BaseHTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: BaseHTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[BaseHTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["bdi"],
-    props: HTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: HTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[HTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["bdo"],
-    props: HTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: HTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[HTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["big"],
-    props: HTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: HTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[HTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["blockquote"],
-    props: BlockquoteHTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: BlockquoteHTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[BlockquoteHTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["body"],
-    props: HTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: HTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[HTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["br"],
-    props: HTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: HTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[HTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["button"],
-    props: ButtonHTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: ButtonHTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[ButtonHTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["canvas"],
-    props: CanvasHTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: CanvasHTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[CanvasHTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["caption"],
-    props: HTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: HTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[HTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["cite"],
-    props: HTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: HTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[HTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["code"],
-    props: HTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: HTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[HTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["col"],
-    props: ColHTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: ColHTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[ColHTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["colgroup"],
-    props: ColgroupHTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: ColgroupHTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[ColgroupHTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["data"],
-    props: DataHTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: DataHTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[DataHTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["datalist"],
-    props: HTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: HTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[HTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["dd"],
-    props: HTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: HTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[HTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["del_"],
-    props: DelHTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: DelHTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[DelHTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["details"],
-    props: DetailsHTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: DetailsHTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[DetailsHTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["dfn"],
-    props: HTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: HTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[HTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["dialog"],
-    props: DialogHTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: DialogHTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[DialogHTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["div"],
-    props: HTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: HTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[HTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["dl"],
-    props: HTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: HTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[HTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["dt"],
-    props: HTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: HTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[HTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["em"],
-    props: HTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: HTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[HTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["embed"],
-    props: EmbedHTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: EmbedHTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[EmbedHTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["fieldset"],
-    props: FieldsetHTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: FieldsetHTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[FieldsetHTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["figcaption"],
-    props: HTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: HTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[HTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["figure"],
-    props: HTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: HTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[HTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["footer"],
-    props: HTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: HTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[HTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["form"],
-    props: FormHTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: FormHTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[FormHTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["h1"],
-    props: HTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: HTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[HTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["h2"],
-    props: HTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: HTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[HTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["h3"],
-    props: HTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: HTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[HTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["h4"],
-    props: HTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: HTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[HTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["h5"],
-    props: HTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: HTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[HTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["h6"],
-    props: HTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: HTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[HTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["head"],
-    props: HTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: HTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[HTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["header"],
-    props: HTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: HTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[HTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["hgroup"],
-    props: HTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: HTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[HTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["hr"],
-    props: HTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: HTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[HTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["html"],
-    props: HtmlHTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: HtmlHTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[HtmlHTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["i"],
-    props: HTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: HTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[HTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["iframe"],
-    props: IframeHTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: IframeHTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[IframeHTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["img"],
-    props: ImgHTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: ImgHTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[ImgHTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["input"],
-    props: InputHTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: InputHTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[InputHTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["ins"],
-    props: InsHTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: InsHTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[InsHTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["kbd"],
-    props: HTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: HTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[HTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["keygen"],
-    props: KeygenHTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: KeygenHTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[KeygenHTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["label"],
-    props: LabelHTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: LabelHTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[LabelHTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["legend"],
-    props: HTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: HTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[HTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["li"],
-    props: LiHTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: LiHTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[LiHTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["link"],
-    props: LinkHTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: LinkHTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[LinkHTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["main"],
-    props: HTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: HTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[HTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["map"],
-    props: MapHTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: MapHTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[MapHTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["mark"],
-    props: HTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: HTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[HTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["menu"],
-    props: MenuHTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: MenuHTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[MenuHTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["menuitem"],
-    props: HTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: HTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[HTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["meta"],
-    props: MetaHTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: MetaHTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[MetaHTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["meter"],
-    props: MeterHTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: MeterHTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[MeterHTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["nav"],
-    props: HTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: HTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[HTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["noscript"],
-    props: HTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: HTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[HTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["object"],
-    props: ObjectHTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: ObjectHTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[ObjectHTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["ol"],
-    props: OlHTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: OlHTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[OlHTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["optgroup"],
-    props: OptgroupHTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: OptgroupHTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[OptgroupHTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["option"],
-    props: OptionHTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: OptionHTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[OptionHTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["output"],
-    props: OutputHTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: OutputHTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[OutputHTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["p"],
-    props: HTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: HTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[HTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["param"],
-    props: ParamHTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: ParamHTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[ParamHTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["picture"],
-    props: HTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: HTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[HTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["pre"],
-    props: HTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: HTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[HTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["progress"],
-    props: ProgressHTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: ProgressHTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[ProgressHTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["rp"],
-    props: HTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: HTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[HTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["rt"],
-    props: HTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: HTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[HTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["ruby"],
-    props: HTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: HTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[HTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["s"],
-    props: HTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: HTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[HTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["samp"],
-    props: HTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: HTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[HTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["script"],
-    props: ScriptHTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: ScriptHTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[ScriptHTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["section"],
-    props: HTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: HTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[HTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["select"],
-    props: SelectHTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: SelectHTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[SelectHTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["small"],
-    props: HTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: HTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[HTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["source"],
-    props: SourceHTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: SourceHTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[SourceHTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["span"],
-    props: HTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: HTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[HTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["strong"],
-    props: HTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: HTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[HTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["style"],
-    props: StyleHTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: StyleHTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[StyleHTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["sub"],
-    props: HTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: HTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[HTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["summary"],
-    props: HTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: HTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[HTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["sup"],
-    props: HTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: HTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[HTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["table"],
-    props: TableHTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: TableHTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[TableHTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["tbody"],
-    props: HTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: HTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[HTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["td"],
-    props: TdHTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: TdHTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[TdHTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["textarea"],
-    props: TextareaHTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: TextareaHTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[TextareaHTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["tfoot"],
-    props: HTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: HTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[HTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["th"],
-    props: ThHTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: ThHTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[ThHTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["thead"],
-    props: HTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: HTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[HTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["time"],
-    props: TimeHTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: TimeHTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[TimeHTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["title"],
-    props: HTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: HTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[HTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["tr"],
-    props: HTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: HTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[HTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["track"],
-    props: TrackHTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: TrackHTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[TrackHTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["u"],
-    props: HTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: HTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[HTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["ul"],
-    props: HTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: HTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[HTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["var"],
-    props: HTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: HTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[HTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["video"],
-    props: VideoHTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: VideoHTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[VideoHTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["wbr"],
-    props: HTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: HTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[HTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 @overload
 def h(
     tag_name: Literal["webview"],
-    props: WebViewHTMLAttributes | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: WebViewHTMLAttributes | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[WebViewHTMLAttributes]:
-    ...
+    ...  # pragma: nocover
 
 
 def h[T: TypedDict](
     tag_name: str,
-    props: T | dict[str, str] | None = None,
-    children: list["HTMLElement | str"] | str | None = None,
+    props: T | dict[str, str | int | bool] | None = None,
+    children: HTMLNode | None = None,
     safe: bool = False,
 ) -> HTMLElement[T]:
     """Wrapper to create a component of given tag name, similar to JS ecosystem's `h()`.
