@@ -1,0 +1,13 @@
+site_name: Liku
+theme:
+  name: material
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+nav:
+  - Introduction: "index.md"
+  - Quickstart:
+      - Installation: "quickstart/installation.md"
+      - Creating Liku Component: "quickstart/components.md"
+      - Integration With Web Frameworks: "quickstart/integration.md"

@@ -12,6 +12,9 @@ python = "^3.12"
 typing-extensions = "^4.9.0"
 
 
+[tool.poetry.group.dev.dependencies]
+mkdocs-material = {version = "^9.5.3", extras = ["docs"]}
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
