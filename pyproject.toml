@@ -20,6 +20,7 @@ classifiers = [
 
 [tool.poetry.dependencies]
 python = "^3.12"
+flask = {version = ">1.1.0,<4.0", extras = ["flask"]}
 
 [tool.poetry.group.dev.dependencies]
 mkdocs-material = {version = "^9.5.3", extras = ["docs"]}
