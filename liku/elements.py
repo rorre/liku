@@ -160,6 +160,7 @@ class GenericComponent[ElemPropsType: TypedDict]:
                 return f"{opening_tag}{self.render_child()}</{tag_name}>"
 
         Element.__name__ = tag_name
+        Element.__qualname__ = "GenericComponent." + tag_name
         return Element
 
 
