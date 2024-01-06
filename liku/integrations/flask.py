@@ -18,7 +18,7 @@ ResponseReturnValue = (
 RouteCallable = Callable[..., ResponseReturnValue]
 
 
-def component_response[T: ResponseReturnValue, **P](
+def component[T: ResponseReturnValue, **P](
     f: Callable[P, T],
 ) -> Callable[P, Response]:
     """Converts view function to automatically convert Liku's HTML Elements to Flask's Response."""

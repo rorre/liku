@@ -2,20 +2,20 @@ import random
 from flask import Flask
 import liku as e
 
-from liku.integrations.flask import component_response
+from liku.integrations.flask import component
 from components import Layout, GeneratedPost
 
 app = Flask(__name__)
 
 
 @app.get("/random")
-@component_response
+@component
 def random_post():
     return GeneratedPost(random.randint(1, 10))
 
 
 @app.get("/")
-@component_response
+@component
 def home():
     return Layout(
         e.div(
