@@ -1,10 +1,29 @@
 import liku as e
 from faker import Faker
 
-faker = Faker()
+
+def HeaderRow():
+    return e.div(
+        props={"class_": "flex flex-row gap-4 justify-between items-center"},
+        children=[
+            e.h1(
+                props={"class_": "text-xl font-bold"},
+                children="My Blog!",
+            ),
+            e.button(
+                props={
+                    "class_": "rounded-md px-4 py-2 border-blue-500 border",
+                    "hx-get": "/random",
+                    "hx-target": "#posts",
+                    "hx-swap": "outerHTML",
+                },
+                children="Randomize Post",
+            ),
+        ],
+    )
 
 
-def GeneratedPost(n: int):
+def GeneratedPost(n: int, faker: Faker):
     return e.div(
         props={"id": "posts", "class_": "flex flex-col gap-4"},
         children=[Card(faker.sentence(), faker.paragraphs()) for _ in range(n)],
@@ -48,7 +67,7 @@ def Card(title: str, description: str):
             e.p(children=description),
             e.a(
                 props={
-                    "href": "https://google.com",
+                    "href": "post",
                     "class_": "underline text-blue-500 hover:cursor-pointer",
                 },
                 children="Read More",
