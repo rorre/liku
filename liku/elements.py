@@ -60,7 +60,7 @@ class HTMLElement[PropsType: TypedDict](ABC):
 
     def __init__(
         self,
-        props: PropsType | HTMLAttributes | dict[str, str | int | bool] | None = None,
+        props: PropsType | dict[str, str | int | bool] | None = None,
         children: "HTMLNode | None" = None,
         safe: bool = False,
     ):
