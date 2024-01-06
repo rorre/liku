@@ -1,16 +1,25 @@
 [tool.poetry]
 name = "liku"
 version = "0.1.0"
-description = ""
+description = "Render HTML inspired by modern web development."
 authors = ["Rendy Arya Kemal <renrror@gmail.com>"]
 readme = "README.md"
 packages = [{include = "liku"}]
 license = "MIT"
+documentation = "https://rorre.github.io/liku/"
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Software Development :: User Interfaces",
+    "Topic :: Text Processing :: Markup",
+    "Topic :: Text Processing :: Markup :: HTML",
+    "Typing :: Typed"
+]
 
 [tool.poetry.dependencies]
 python = "^3.12"
-typing-extensions = "^4.9.0"
-
 
 [tool.poetry.group.dev.dependencies]
 mkdocs-material = {version = "^9.5.3", extras = ["docs"]}
