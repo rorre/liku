@@ -11,5 +11,8 @@ You will need Python 3.12. This is required because the source code uses new syn
   pip install git+https://github.com/rorre/liku.git@main
   ```
 - PyPI (soon)
+  ```
+  pip install liku
+  ```
 
 And you are good to go! Continue to [writing your components](components.md)

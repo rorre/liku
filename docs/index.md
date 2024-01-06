@@ -4,7 +4,7 @@ Liku is a library to render HTML, inspired by modern Web Development.
 
 ## Quickstart
 
-- Install the package first! (PyPI soon)
+- Install the package first!: `pip install liku`
 - Start working by importing the library: `import liku as e`
 - Write your components! See example below
 
