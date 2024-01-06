@@ -1,17 +1,16 @@
 import random
 
-from django.http import HttpRequest
+from django.http import HttpRequest, HttpResponse
 import liku as e
 from blog.components import GeneratedPost, Layout
-from liku.integrations.django import HttpLikuResponse
 
 
 def random_post(request: HttpRequest):
-    return HttpLikuResponse(GeneratedPost(random.randint(1, 10)))
+    return HttpResponse(GeneratedPost(random.randint(1, 10)))
 
 
 def home(request: HttpRequest):
-    return HttpLikuResponse(
+    return HttpResponse(
         Layout(
             e.div(
                 props={"class_": "flex flex-col gap-4"},
