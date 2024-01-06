@@ -139,7 +139,9 @@ class GenericComponent[ElemPropsType: TypedDict]:
     """
 
     @staticmethod
-    def create(tag_name: str) -> type[HTMLElement[ElemPropsType]]:
+    def create(
+        tag_name: str, void_element: bool = False
+    ) -> type[HTMLElement[ElemPropsType]]:
         """Creates a class for the given tag name.
 
         Args:
@@ -155,8 +157,11 @@ class GenericComponent[ElemPropsType: TypedDict]:
                 opening_tag = "<" + tag_name
                 if len(self.props) != 0:
                     opening_tag += " " + self.format_props()
-                opening_tag += ">"
 
+                if void_element:
+                    return f"{opening_tag} />"
+
+                opening_tag += ">"
                 return f"{opening_tag}{self.render_child()}</{tag_name}>"
 
         Element.__name__ = tag_name
@@ -168,24 +173,24 @@ HTMLNode: TypeAlias = list[HTMLElement | str] | HTMLElement | str
 a = GenericComponent[AnchorHTMLAttributes].create("a")
 abbr = GenericComponent[HTMLAttributes].create("abbr")
 address = GenericComponent[HTMLAttributes].create("address")
-area = GenericComponent[AreaHTMLAttributes].create("area")
+area = GenericComponent[AreaHTMLAttributes].create("area", True)
 article = GenericComponent[HTMLAttributes].create("article")
 aside = GenericComponent[HTMLAttributes].create("aside")
 audio = GenericComponent[AudioHTMLAttributes].create("audio")
 b = GenericComponent[HTMLAttributes].create("b")
-base = GenericComponent[BaseHTMLAttributes].create("base")
+base = GenericComponent[BaseHTMLAttributes].create("base", True)
 bdi = GenericComponent[HTMLAttributes].create("bdi")
 bdo = GenericComponent[HTMLAttributes].create("bdo")
 big = GenericComponent[HTMLAttributes].create("big")
 blockquote = GenericComponent[BlockquoteHTMLAttributes].create("blockquote")
 body = GenericComponent[HTMLAttributes].create("body")
-br = GenericComponent[HTMLAttributes].create("br")
+br = GenericComponent[HTMLAttributes].create("br", True)
 button = GenericComponent[ButtonHTMLAttributes].create("button")
 canvas = GenericComponent[CanvasHTMLAttributes].create("canvas")
 caption = GenericComponent[HTMLAttributes].create("caption")
 cite = GenericComponent[HTMLAttributes].create("cite")
 code = GenericComponent[HTMLAttributes].create("code")
-col = GenericComponent[ColHTMLAttributes].create("col")
+col = GenericComponent[ColHTMLAttributes].create("col", True)
 colgroup = GenericComponent[ColgroupHTMLAttributes].create("colgroup")
 data = GenericComponent[DataHTMLAttributes].create("data")
 datalist = GenericComponent[HTMLAttributes].create("datalist")
@@ -198,7 +203,7 @@ div = GenericComponent[HTMLAttributes].create("div")
 dl = GenericComponent[HTMLAttributes].create("dl")
 dt = GenericComponent[HTMLAttributes].create("dt")
 em = GenericComponent[HTMLAttributes].create("em")
-embed = GenericComponent[EmbedHTMLAttributes].create("embed")
+embed = GenericComponent[EmbedHTMLAttributes].create("embed", True)
 fieldset = GenericComponent[FieldsetHTMLAttributes].create("fieldset")
 figcaption = GenericComponent[HTMLAttributes].create("figcaption")
 figure = GenericComponent[HTMLAttributes].create("figure")
@@ -213,25 +218,25 @@ h6 = GenericComponent[HTMLAttributes].create("h6")
 head = GenericComponent[HTMLAttributes].create("head")
 header = GenericComponent[HTMLAttributes].create("header")
 hgroup = GenericComponent[HTMLAttributes].create("hgroup")
-hr = GenericComponent[HTMLAttributes].create("hr")
+hr = GenericComponent[HTMLAttributes].create("hr", True)
 html = GenericComponent[HtmlHTMLAttributes].create("html")
 i = GenericComponent[HTMLAttributes].create("i")
 iframe = GenericComponent[IframeHTMLAttributes].create("iframe")
-img = GenericComponent[ImgHTMLAttributes].create("img")
-input = GenericComponent[InputHTMLAttributes].create("input")
+img = GenericComponent[ImgHTMLAttributes].create("img", True)
+input = GenericComponent[InputHTMLAttributes].create("input", True)
 ins = GenericComponent[InsHTMLAttributes].create("ins")
 kbd = GenericComponent[HTMLAttributes].create("kbd")
 keygen = GenericComponent[KeygenHTMLAttributes].create("keygen")
 label = GenericComponent[LabelHTMLAttributes].create("label")
 legend = GenericComponent[HTMLAttributes].create("legend")
 li = GenericComponent[LiHTMLAttributes].create("li")
-link = GenericComponent[LinkHTMLAttributes].create("link")
+link = GenericComponent[LinkHTMLAttributes].create("link", True)
 main = GenericComponent[HTMLAttributes].create("main")
 map = GenericComponent[MapHTMLAttributes].create("map")
 mark = GenericComponent[HTMLAttributes].create("mark")
 menu = GenericComponent[MenuHTMLAttributes].create("menu")
 menuitem = GenericComponent[HTMLAttributes].create("menuitem")
-meta = GenericComponent[MetaHTMLAttributes].create("meta")
+meta = GenericComponent[MetaHTMLAttributes].create("meta", True)
 meter = GenericComponent[MeterHTMLAttributes].create("meter")
 nav = GenericComponent[HTMLAttributes].create("nav")
 noscript = GenericComponent[HTMLAttributes].create("noscript")
@@ -241,7 +246,7 @@ optgroup = GenericComponent[OptgroupHTMLAttributes].create("optgroup")
 option = GenericComponent[OptionHTMLAttributes].create("option")
 output = GenericComponent[OutputHTMLAttributes].create("output")
 p = GenericComponent[HTMLAttributes].create("p")
-param = GenericComponent[ParamHTMLAttributes].create("param")
+param = GenericComponent[ParamHTMLAttributes].create("param", True)
 picture = GenericComponent[HTMLAttributes].create("picture")
 pre = GenericComponent[HTMLAttributes].create("pre")
 progress = GenericComponent[ProgressHTMLAttributes].create("progress")
@@ -254,7 +259,7 @@ script = GenericComponent[ScriptHTMLAttributes].create("script")
 section = GenericComponent[HTMLAttributes].create("section")
 select = GenericComponent[SelectHTMLAttributes].create("select")
 small = GenericComponent[HTMLAttributes].create("small")
-source = GenericComponent[SourceHTMLAttributes].create("source")
+source = GenericComponent[SourceHTMLAttributes].create("source", True)
 span = GenericComponent[HTMLAttributes].create("span")
 strong = GenericComponent[HTMLAttributes].create("strong")
 style = GenericComponent[StyleHTMLAttributes].create("style")
@@ -271,12 +276,12 @@ thead = GenericComponent[HTMLAttributes].create("thead")
 time = GenericComponent[TimeHTMLAttributes].create("time")
 title = GenericComponent[HTMLAttributes].create("title")
 tr = GenericComponent[HTMLAttributes].create("tr")
-track = GenericComponent[TrackHTMLAttributes].create("track")
+track = GenericComponent[TrackHTMLAttributes].create("track", True)
 u = GenericComponent[HTMLAttributes].create("u")
 ul = GenericComponent[HTMLAttributes].create("ul")
 var = GenericComponent[HTMLAttributes].create("var")
 video = GenericComponent[VideoHTMLAttributes].create("video")
-wbr = GenericComponent[HTMLAttributes].create("wbr")
+wbr = GenericComponent[HTMLAttributes].create("wbr", True)
 webview = GenericComponent[WebViewHTMLAttributes].create("webview")
 
 

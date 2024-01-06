@@ -1,6 +1,8 @@
 import html
+from typing import Type
 import pytest
 import liku as e
+from liku.elements import HTMLElement
 
 
 def test_generic():
@@ -95,3 +97,28 @@ def test_h():
             children=e.strong(children="h() function"),
         ).render()
     )
+
+
+def test_void_element():
+    elems: list[Type[HTMLElement]] = [
+        e.area,
+        e.base,
+        e.br,
+        e.col,
+        e.embed,
+        e.hr,
+        e.img,
+        e.input,
+        e.link,
+        e.meta,
+        e.param,
+        e.source,
+        e.track,
+        e.wbr,
+    ]
+
+    for elem in elems:
+        assert (
+            str(elem(props={"class_": "sample"}, children="not used"))
+            == f'<{elem.__name__} class="sample" />'
+        )
