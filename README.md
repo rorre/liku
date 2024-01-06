@@ -87,4 +87,4 @@ apps more powerful to use and less of a headache to manage.
 
 ## Examples
 
-Examples available at [examples directory](./examples)
+Examples available at [examples directory](https://github.com/rorre/liku/tree/main/examples)

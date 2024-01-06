@@ -6,6 +6,7 @@ Liku is a library to render HTML, inspired by modern Web Development.
 
 - Install the package first! (PyPI soon)
 - Start working by importing the library: `import liku as e`
+- Write your components! See example below
 
 ### Simple Component
 
@@ -25,27 +26,17 @@ print(Card("Hello", "world!"))
 # <div class="rounded-md border p-4"><strong >Hello</strong><p >world!</p></div>
 ```
 
-## Motivation
+## Features
 
-Templating engine always uses some sort of custom format, whether it be Jinja, Django's templating, or anything else. These are powerful tools,
-but after going back from the time where I keep writing React code, something clicks in me: "I like extending JS with HTML". So, I decided
-to do just that in this library.
+- **Python**: It literally is just Python, everything is represented in Python
+- **Statically Typed**: Every single component is statically typed, even the props/attributes
+- **Zero dependencies**: Unless you add integrations support, there is no added dependencies whatsoever
+- **Fast**: There is no I/O logic, just traversing through the tree (benchmark soon)
 
-The benefit of this project is that I have the full power of Python, while still being able to reflect my front-end code at the same time.
-This way, not only I can benefit from Python's LSP, I have full control of what is executed, so integrating with database is easier.
+## Optional Dependencies
 
-The ideas are as follows:
-
-- Allow full LSP and typed nature of representing HTML
-- Easily compose components into each own function (very useful for maintainability, and with HTMX on the rise, this makes even more sense)
-- Keep library as simple as possible
-
-## Future
-
-Considering there is already the equivalent of `h()` function in JS ecosystem, there is a plan to write own JSX system in Python, hopefully
-with LSP support as well. This would mean that both HTML and Python can be very easily represented in the same space, making SSR rendered
-apps more powerful to use and less of a headache to manage.
+- `liku[flask]`: Flask >= 1.1.0, < 4.0. Essentially all stable versions
 
 ## Examples
 
-Examples available at [examples directory](./examples)
+Examples available at [examples directory](https://github.com/rorre/liku/tree/main/examples)

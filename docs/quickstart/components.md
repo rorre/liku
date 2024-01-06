@@ -1,6 +1,6 @@
 # Creating Liku Component
 
-To create a Liku component, you need to have the library installed. Follow the [installation guide](installation) to get started.
+To create a Liku component, you need to have the library installed. Follow the [installation guide](installation.md) to get started.
 
 ## Overview
 
@@ -55,7 +55,9 @@ Very simple, isn't it?
 
 Let's make a component just like this one:
 
-![](https://i.imgur.com/TUWTECN.png)
+<figure>
+    <img src="https://i.imgur.com/TUWTECN.png)" />
+</figure>
 
 Here is the HTML code for the component:
 
