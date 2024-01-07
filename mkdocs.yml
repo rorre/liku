@@ -42,3 +42,4 @@ nav:
       - Creating Liku Component: "quickstart/components.md"
       - Integration With Web Frameworks: "quickstart/integration.md"
   - Security: "security.md"
+  - Tailwind CSS: "tailwindcss.md"
