@@ -4,6 +4,8 @@ from typing import overload
 
 
 class Context[T]:
+    """Primitive context type to share state between components."""
+
     context: ContextVar[T]
 
     @overload
@@ -22,6 +24,12 @@ class Context[T]:
 
     @contextmanager
     def provide(self, value: T):
+        """Context manager to provide value to all consumer of this context. Thread safe.
+
+        Args:
+            value (T): Value to assign.
+        """
+
         def _inner():
             token = self.context.set(value)
             yield self.context
@@ -30,6 +38,14 @@ class Context[T]:
         return copy_context().run(_inner)
 
     def get(self):
+        """Gets current value of this context
+
+        Raises:
+            LookupError: If value has never been set via .provide() and no default is set.
+
+        Returns:
+            T: Value of this context
+        """
         try:
             return self.context.get()
         except LookupError as e:
@@ -39,4 +55,9 @@ class Context[T]:
 
 
 def use_context[T](context: Context[T]) -> T:
+    """Fetches current value of given context.
+
+    Returns:
+        T: Current value of the context
+    """
     return context.get()
