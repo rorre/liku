@@ -116,7 +116,7 @@ class HTMLElement[PropsType: TypedDict](ABC):
                 return child
             return htmllib.escape(child)
 
-        return "".join([_render(elem) for elem in self.children])
+        return "".join([_render(elem) for elem in self.children if elem is not None])
 
     def __str__(self):
         return self.render()
@@ -169,7 +169,7 @@ class GenericComponent[ElemPropsType: TypedDict]:
         return Element
 
 
-HTMLNode: TypeAlias = list[HTMLElement | str] | HTMLElement | str
+HTMLNode: TypeAlias = list[HTMLElement | str | None] | HTMLElement | str
 a = GenericComponent[AnchorHTMLAttributes].create("a")
 abbr = GenericComponent[HTMLAttributes].create("abbr")
 address = GenericComponent[HTMLAttributes].create("address")
