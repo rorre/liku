@@ -10,10 +10,11 @@ HeadersValue = Union[
 ]
 
 ResponseReturnValue = (
-    Tuple[HTMLElement, HeadersValue]
-    | Tuple[HTMLElement, int]
-    | Tuple[HTMLElement, int, HeadersValue]
+    Tuple[HTMLElement | Response, HeadersValue]
+    | Tuple[HTMLElement | Response, int]
+    | Tuple[HTMLElement | Response, int, HeadersValue]
     | HTMLElement
+    | Response
 )
 RouteCallable = Callable[..., ResponseReturnValue]
 
@@ -29,6 +30,8 @@ def component[T: ResponseReturnValue, **P](
 
         if isinstance(result, HTMLElement):
             return make_response(str(result))
+        if isinstance(result, Response):
+            return result
 
         component, *rest = result
         return make_response(str(component), *rest)
