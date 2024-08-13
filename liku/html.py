@@ -93,5 +93,5 @@ def _element_to_html(
 
 
 def html(entity: str, globals: dict | None = None, locals: dict | None = None):
-    root = fragment_fromstring(entity, None)
+    root = fragment_fromstring(entity)
     return _element_to_html(root, globals, locals)
