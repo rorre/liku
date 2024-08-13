@@ -72,11 +72,11 @@ def _element_to_html(
     props = {**props, "children": children}
 
     func = None
-    if globals:
-        func = globals.get(tag_name)
-
-    if locals and not func:
+    if locals:
         func = locals.get(tag_name)
+    
+    if globals and not func:
+        func = globals.get(tag_name)
 
     if not func:
         raise Exception(f"Cannot find component for tag '{elem.tag}'")
