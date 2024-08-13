@@ -55,8 +55,6 @@ def _element_to_html(
             children.append(_process_text_code(child.tail, globals, locals))
 
     if tag_name in liku_exports:
-        if tag_name == "div":
-            print(children)
         return h(tag_name, props, children)  # type: ignore
 
     props = {**props, "children": children}
@@ -74,9 +72,7 @@ def _element_to_html(
     hints = get_type_hints(func)
     return_type = hints.pop("return")
     if return_type not in (HTMLElement, str, list):
-        raise TypeError(
-            f"Return type of component '{elem.tag}' must be HTMLElement | str | list, got '{return_type}'"
-        )
+        raise TypeError(f"Return type of component '{elem.tag}' must be HTMLElement | str | list, got '{return_type}'")
 
     validated_props: dict[str, Any] = {}
     missing_props: set = set()
@@ -86,16 +82,12 @@ def _element_to_html(
             continue
 
         if not isinstance(props[k], hints[k]):
-            raise TypeError(
-                f"Props type mismatch: expected '{hints[k]}', got '{type(k)}'"
-            )
+            raise TypeError(f"Props type mismatch: expected '{hints[k]}', got '{type(k)}'")
 
         validated_props[k] = props[k]
 
     if missing_props:
-        raise ValueError(
-            f"Missing {len(missing_props)} props: {','.join(missing_props)}"
-        )
+        raise ValueError(f"Missing {len(missing_props)} props: {','.join(missing_props)}")
 
     return func(**validated_props)
 
