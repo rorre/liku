@@ -22,9 +22,7 @@ def HeaderRow():
 def GeneratedPost(n: int, faker: Faker):
     posts = [
         html(
-            """<Card :title="faker.sentence()" :description="'\n'.join(faker.paragraphs())" />""",
-            globals(),
-            locals(),
+            """<Card :title="faker.sentence()" :description="'\n'.join(faker.paragraphs())" />"""
         )
         for _ in range(n)
     ]
@@ -33,9 +31,7 @@ def GeneratedPost(n: int, faker: Faker):
         <div id="posts" class="flex flex-col gap-4">
             {{ posts }}
         </div>
-        """,
-        globals(),
-        locals(),
+        """
     )
 
 
@@ -56,9 +52,7 @@ def Layout(children: e.HTMLElement | str | list):
                 </div>
             </body>
         </html>         
-        """,
-        globals(),
-        locals(),
+        """
     )
 
 
@@ -72,7 +66,5 @@ def Card(title: str, description: str):
                 Read More
             </a>
         </div>
-        """,
-        globals(),
-        locals(),
+        """
     )

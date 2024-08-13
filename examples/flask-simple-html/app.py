@@ -27,9 +27,7 @@ def home():
                 <GeneratedPost :n="5" :faker="faker" />
             </div>
         </Layout>
-        """,
-        globals(),
-        locals(),
+        """
     )
 
 
@@ -47,9 +45,7 @@ def show_post():
                 </article>
             </div>
         </Layout>
-        """,
-        globals(),
-        locals(),
+        """
     )
 
 

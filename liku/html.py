@@ -1,3 +1,4 @@
+import inspect
 import re
 from typing import Any, get_type_hints
 from liku import HTMLElement, HTMLNode, __all__ as liku_exports
@@ -103,10 +104,13 @@ def _element_to_html(
     return func(**validated_props)
 
 
-def html(entity: str, globals: dict | None = None, locals: dict | None = None):
+def html(entity: str):
+    previous_frame = inspect.stack(2)[1].frame
     parser = XHTMLParser(recover=True)
+
     try:
         root = fragment_fromstring(entity, parser=parser)
     except AssertionError:
         root = XML(entity, parser)
-    return _element_to_html(root, globals, locals)
+        
+    return _element_to_html(root, previous_frame.f_globals, previous_frame.f_locals)
