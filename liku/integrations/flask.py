@@ -1,7 +1,7 @@
 from functools import wraps
 from typing import Callable, Mapping, Sequence, Tuple, Union
 from flask import Response, make_response
-from liku.elements import HTMLElement
+from liku.elements import HTMLNode, HTMLElement
 
 
 HeadersValue = Union[
@@ -10,18 +10,18 @@ HeadersValue = Union[
 ]
 
 ResponseReturnValue = (
-    Tuple[HTMLElement | Response, HeadersValue]
-    | Tuple[HTMLElement | Response, int]
-    | Tuple[HTMLElement | Response, int, HeadersValue]
-    | HTMLElement
+    Tuple[HTMLNode | Response, HeadersValue]
+    | Tuple[HTMLNode | Response, int]
+    | Tuple[HTMLNode | Response, int, HeadersValue]
+    | HTMLNode
     | Response
 )
 RouteCallable = Callable[..., ResponseReturnValue]
 
 
-def component[T: ResponseReturnValue, **P](
-    f: Callable[P, T],
-) -> Callable[P, Response]:
+def component[
+    T: ResponseReturnValue, **P
+](f: Callable[P, T],) -> Callable[P, Response]:
     """Converts view function to automatically convert Liku's HTML Elements to Flask's Response."""
 
     @wraps(f)
