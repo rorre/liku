@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "liku"
-version = "0.1.1"
+version = "0.1.2"
 description = "Render HTML inspired by modern web development."
 authors = ["Rendy Arya Kemal <renrror@gmail.com>"]
 readme = "README.md"
