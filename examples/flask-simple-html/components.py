@@ -1,6 +1,6 @@
 import liku as e
 from faker import Faker
-from liku.html import html
+from liku.htm import html
 
 
 def HeaderRow():

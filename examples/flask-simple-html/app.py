@@ -2,7 +2,7 @@ import random
 from faker import Faker
 from flask import Flask
 import liku as e
-from liku.html import html
+from liku.htm import html
 from liku.integrations.flask import component
 from components import HeaderRow, Layout, GeneratedPost
 
