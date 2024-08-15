@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "liku"
-version = "0.1.2"
+version = "0.1.2-1"
 description = "Render HTML inspired by modern web development."
 authors = ["Rendy Arya Kemal <renrror@gmail.com>"]
 readme = "README.md"
@@ -20,7 +20,7 @@ classifiers = [
 
 [tool.poetry.dependencies]
 python = "^3.12"
-lxml = "^5.3.0"
+lxml = { version = "^5.3.0", optional = true }
 
 [tool.poetry.group.dev.dependencies]
 mkdocs-material = {version = "^9.5.3", extras = ["docs"]}
@@ -28,6 +28,9 @@ pytest = "^7.4.4"
 pytest-cov = "^4.1.0"
 flask = {version = ">1.1.0,<4.0", extras = ["flask"]}
 types-lxml = "^2024.8.7"
+
+[tool.poetry.extras]
+htm = ["lxml"]
 
 [build-system]
 requires = ["poetry-core"]
