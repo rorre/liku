@@ -1,10 +1,10 @@
 import inspect
 import re
 from typing import Any, get_type_hints
-from liku import HTMLElement, HTMLNode, __all__ as liku_exports
+from liku import HTMLNode, __all__ as liku_exports
 from liku.elements import h
 from lxml.etree import _Element as Element, _Attrib as Attrib, XML
-from lxml.html import fragment_fromstring, tostring, XHTMLParser
+from lxml.html import fragment_fromstring, XHTMLParser
 
 CODE_RE = re.compile(r"{{(.+)}}")
 
@@ -69,8 +69,6 @@ def _element_to_html(
     if tag_name in liku_exports:
         return h(tag_name, props, children)  # type: ignore
 
-    props = {**props, "children": children}
-
     func = None
     if locals:
         func = locals.get(tag_name)
@@ -79,8 +77,9 @@ def _element_to_html(
         func = globals.get(tag_name)
 
     if not func:
-        raise Exception(f"Cannot find component for tag '{elem.tag}'")
+        return h(tag_name, props, children)  # type: ignore
 
+    props = {**props, "children": children}
     hints = get_type_hints(func)
     # return_type = hints.pop("return")
     # if return_type not in (HTMLElement, str, list):
