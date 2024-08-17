@@ -137,8 +137,9 @@ AriaRole: TypeAlias = (
     | Literal["treeitem"]
 )
 
+ClassAttribute = TypedDict("ClassAttribute", {"class": str})
 
-class HTMLAttributes(TypedDict, total=True):
+class HTMLAttributes(ClassAttribute, total=True):
     # Standard HTML Attributes
     accesskey: str
     autofocus: bool
