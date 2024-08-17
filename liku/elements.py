@@ -54,6 +54,22 @@ from liku.signatures import (
     WebViewHTMLAttributes,
 )
 
+VOID_TAGS = [
+    "area",
+    "base",
+    "br",
+    "col",
+    "embed",
+    "hr",
+    "img",
+    "input",
+    "link",
+    "meta",
+    "param",
+    "source",
+    "track",
+    "wbr",
+]
 
 class HTMLElement[PropsType: TypedDict](ABC):
     """Representation of a HTML element."""
@@ -140,7 +156,7 @@ class GenericComponent[ElemPropsType: TypedDict]:
 
     @staticmethod
     def create(
-        tag_name: str, void_element: bool = False
+        tag_name: str, void_element: bool | None = None
     ) -> type[HTMLElement[ElemPropsType]]:
         """Creates a class for the given tag name.
 
@@ -151,6 +167,8 @@ class GenericComponent[ElemPropsType: TypedDict]:
             type[HTMLElement[ElemPropsType]]: The generated class that can be used for
             representations of the element.
         """
+        if void_element is None:
+            void_element = tag_name.lower() in VOID_TAGS
 
         class Element(HTMLElement):
             def render(self):
