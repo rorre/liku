@@ -26,7 +26,7 @@ Visual Studio Code exist. Currently, there is no ETA to release on marketplace, 
 the code and compile it yourself [here](https://github.com/rorre/liku-lsp).
 
 <figure markdown="span">
-  ![LSP Demo](/image/lspdemo.gif)
+  ![LSP Demo](../image/lspdemo.gif)
   <figcaption>Extension in action</figcaption>
 </figure>
 
