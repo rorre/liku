@@ -25,6 +25,11 @@ To aid developers on developing their app with Liku with HTML in Python mode, th
 Visual Studio Code exist. Currently, there is no ETA to release on marketplace, but you may see
 the code and compile it yourself [here](https://github.com/rorre/liku-lsp).
 
+<figure markdown="span">
+  ![LSP Demo](/image/lspdemo.gif)
+  <figcaption>Extension in action</figcaption>
+</figure>
+
 Features:
 
 - Completion on component names
