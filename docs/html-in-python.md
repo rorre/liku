@@ -19,6 +19,29 @@ This feature requires `lxml` to be installed. To install the supported version, 
 pip install git+https://github.com/rorre/liku.git@main[htm]
 ```
 
+## Visual Studio Code Extension
+
+To aid developers on developing their app with Liku with HTML in Python mode, this extension for
+Visual Studio Code exist. Currently, there is no ETA to release on marketplace, but you may see
+the code and compile it yourself [here](https://github.com/rorre/liku-lsp).
+
+Features:
+
+- Completion on component names
+- Completion on props
+- Completion on `{{ expression }}` directive
+- Completion on programmatic value props
+
+However, there are a lot of caveats:
+
+- **You must use triple backtick** inside `html()` for the completion to work.
+- **All completions are taken on all scopes.** This means other function's locals will also be included.
+- **No check for already filled in props.** This means you might be suggested already filled props.
+- **No semantic tokens.** (aka syntax highlighting)
+- **No type checks/linting.**
+
+If you are using other editor, you may make use of the LSP inside `bundled/tools` directory.
+
 ## Feature Overview
 
 Below is the code that we'll learn in this article. We'll explain all the features of across the following sections.
@@ -227,26 +250,3 @@ print(
 )
 
 ```
-
-## Visual Studio Code Extension
-
-To aid developers on developing their app with Liku with HTML in Python mode, this extension for
-Visual Studio Code exist. Currently, there is no ETA to release on marketplace, but you may see
-the code and compile it yourself [here](https://github.com/rorre/liku-lsp).
-
-Features:
-
-- Completion on component names
-- Completion on props
-- Completion on `{{ expression }}` directive
-- Completion on programmatic value props
-
-However, there are a lot of caveats:
-
-- **You must use triple backtick** inside `html()` for the completion to work.
-- **All completions are taken on all scopes.** This means other function's locals will also be included.
-- **No check for already filled in props.** This means you might be suggested already filled props.
-- **No semantic tokens.** (aka syntax highlighting)
-- **No type checks/linting.**
-
-If you are using other editor, you may make use of the LSP inside `bundled/tools` directory.
