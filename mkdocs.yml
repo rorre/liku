@@ -42,5 +42,6 @@ nav:
       - Creating Liku Component: "quickstart/components.md"
       - Passing State Deeply: "quickstart/context.md"
       - Integration With Web Frameworks: "quickstart/integration.md"
+  - HTML in Python: "html-in-python.md"
   - Security: "security.md"
   - Tailwind CSS: "tailwindcss.md"
