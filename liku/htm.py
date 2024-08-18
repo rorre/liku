@@ -1,11 +1,10 @@
 import inspect
 import re
-from typing import Any, get_type_hints
+from typing import Any
 from liku import HTMLNode, __all__ as liku_exports
 from liku.elements import h
 from lxml.etree import _Element as Element, _Attrib as Attrib, XML
 from lxml.html import fragment_fromstring, XHTMLParser
-from typeguard import check_type
 
 CODE_RE = re.compile(r"{{(.+)}}")
 
@@ -73,32 +72,18 @@ def _element_to_html(
     func = None
     if locals:
         func = locals.get(tag_name)
-    
+
     if globals and not func:
         func = globals.get(tag_name)
 
     if not func:
         return h(tag_name, props, children)  # type: ignore
 
-    props = {**props, "children": children}
-    hints = get_type_hints(func)
-    # return_type = hints.pop("return")
-    # if return_type not in (HTMLElement, str, list):
-    #     raise TypeError(f"Return type of component '{elem.tag}' must be HTMLElement | str | list, got '{return_type}'")
+    func_argspec = inspect.getfullargspec(func)
+    if "children" in (*func_argspec.args, *func_argspec.kwonlyargs):
+        props = {**props, "children": children}
 
-    validated_props: dict[str, Any] = {}
-    missing_props: set = set()
-    for k in hints.keys():
-        if k not in props:
-            missing_props.add(k)
-            continue
-
-        validated_props[k] = check_type(props[k], hints[k])
-
-    if missing_props:
-        raise ValueError(f"Missing {len(missing_props)} props: {','.join(missing_props)}")
-
-    return func(**validated_props)
+    return func(**props)
 
 
 def html(entity: str):
@@ -109,5 +94,5 @@ def html(entity: str):
         root = fragment_fromstring(entity, parser=parser)
     except AssertionError:
         root = XML(entity, parser)
-        
+
     return _element_to_html(root, previous_frame.f_globals, previous_frame.f_locals)
