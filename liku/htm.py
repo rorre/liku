@@ -5,6 +5,7 @@ from liku import HTMLNode, __all__ as liku_exports
 from liku.elements import h
 from lxml.etree import _Element as Element, _Attrib as Attrib, XML
 from lxml.html import fragment_fromstring, XHTMLParser
+from typeguard import check_type
 
 CODE_RE = re.compile(r"{{(.+)}}")
 
@@ -92,10 +93,7 @@ def _element_to_html(
             missing_props.add(k)
             continue
 
-        if not isinstance(props[k], hints[k]):
-            raise TypeError(f"Props type mismatch for '{k}': expected '{hints[k]}', got '{type(props[k])}'")
-
-        validated_props[k] = props[k]
+        validated_props[k] = check_type(props[k], hints[k])
 
     if missing_props:
         raise ValueError(f"Missing {len(missing_props)} props: {','.join(missing_props)}")
