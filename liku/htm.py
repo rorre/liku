@@ -1,3 +1,4 @@
+from collections.abc import Iterable
 import inspect
 import re
 from typing import Any
@@ -21,7 +22,7 @@ def _process_text_code(
             results.append(previous)
 
         result = eval(match.group(1), globals, locals)
-        if isinstance(result, list):
+        if isinstance(result, Iterable):
             results.extend(result)
         else:
             results.append(result)
