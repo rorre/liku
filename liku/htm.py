@@ -7,7 +7,7 @@ from liku.elements import h
 from lxml.etree import _Element as Element, _Attrib as Attrib, XML
 from lxml.html import fragment_fromstring, XHTMLParser
 
-CODE_RE = re.compile(r"{{(.+?)}}")
+CODE_RE = re.compile(r"{{(.+?)}}", re.MULTILINE)
 
 
 def _process_text_code(
