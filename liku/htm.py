@@ -39,7 +39,7 @@ def _process_text_code(
     globals: dict | None = None,
     locals: dict | None = None,
 ):
-    results: list[HTMLNode] = []
+    results: list[Any] = []
     while match := _find_first_code(text):
         previous = text[: text.find(match)]
         if previous:
@@ -82,7 +82,7 @@ def _element_to_html(
     tag_name = elem.tag.replace("-", "_")
     props = _resolve_props(elem.attrib, globals, locals)
 
-    children: list[HTMLNode] = []
+    children: list[Any] = []
     if elem.text:
         children.extend(_process_text_code(elem.text, globals, locals))
 
