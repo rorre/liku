@@ -1,11 +1,13 @@
-from collections import deque
-from collections.abc import Iterable
+from collections import OrderedDict, deque
 import inspect
 from typing import Any
 from liku import HTMLNode, __all__ as liku_exports
+from liku._utils import random_str
 from liku.elements import h
 from lxml.etree import _Element as Element, _Attrib as Attrib, XML
 from lxml.html import fragment_fromstring, XHTMLParser
+
+__LIKU_IDENT__ = "#LIKU_TOREPLACE"
 
 
 def _find_first_code(text: str):
@@ -22,7 +24,8 @@ def _find_first_code(text: str):
         if "".join(brackets_buf) == "{{":
             stack += 1
             brackets_buf.clear()
-            buf = "{{"
+            if stack == 1:
+                buf = "{{"
         elif "".join(brackets_buf) == "}}":
             stack -= 1
             brackets_buf.clear()
@@ -39,22 +42,39 @@ def _process_text_code(
     globals: dict | None = None,
     locals: dict | None = None,
 ):
-    results: list[Any] = []
-    while match := _find_first_code(text):
-        previous = text[: text.find(match)]
-        if previous:
-            results.append(previous)
+    replacement_mapping: dict[str, Any] = OrderedDict()
 
+    while match := _find_first_code(text):
         result = eval(match[2:-2], globals, locals)
-        if isinstance(result, Iterable):
-            results.extend(result)
+        identifier = __LIKU_IDENT__ + random_str(64)
+        replacement_mapping[identifier] = result
+        text = text.replace(match, identifier)
+
+    return text, replacement_mapping
+
+
+def _resolve_replacement(
+    text: str,
+    mapping: dict[str, Any],
+):
+    resolved_childrens = []
+    while text.find(__LIKU_IDENT__) != -1:
+        start_idx = text.find(__LIKU_IDENT__)
+        end_idx = start_idx + len(__LIKU_IDENT__) + 64
+        if start_idx > 0:
+            resolved_childrens.append(text[:start_idx])
+
+        ident = text[start_idx:end_idx]
+        if ident in mapping:
+            value = mapping.pop(ident)
+            resolved_childrens.append(value)
         else:
-            results.append(result)
-        text = text[text.find(match) + len(match) :]
+            resolved_childrens.append(ident)
+        text = text[end_idx:]
 
     if text:
-        results.append(text)
-    return results
+        resolved_childrens.append(text)
+    return resolved_childrens
 
 
 def _resolve_props(
@@ -64,6 +84,11 @@ def _resolve_props(
 ) -> dict[str, Any]:
     resolved_props: dict[str, str] = {}
     for k, v in props.iteritems():
+        if v.startswith(__LIKU_IDENT__):
+            raise ValueError(
+                "You are using template variable inside a dynamic props. Please remove the brackets."
+            )
+
         actual_value = v
         if k.startswith(":"):
             # I think there needs to be a better way for this
@@ -76,6 +101,7 @@ def _resolve_props(
 
 def _element_to_html(
     elem: Element,
+    mapping: dict[str, Any],
     globals: dict | None = None,
     locals: dict | None = None,
 ) -> HTMLNode:
@@ -84,12 +110,12 @@ def _element_to_html(
 
     children: list[Any] = []
     if elem.text:
-        children.extend(_process_text_code(elem.text, globals, locals))
+        children.extend(_resolve_replacement(elem.text, mapping))
 
     for child in elem:
-        children.append(_element_to_html(child, globals, locals))
+        children.append(_element_to_html(child, mapping, globals, locals))
         if child.tail:
-            children.extend(_process_text_code(child.tail, globals, locals))
+            children.extend(_resolve_replacement(child.tail, mapping))
 
     if tag_name in liku_exports:
         return h(tag_name, props, children)  # type: ignore
@@ -115,9 +141,18 @@ def html(entity: str):
     previous_frame = inspect.stack(2)[1].frame
     parser = XHTMLParser(recover=True)
 
+    entity, mapping = _process_text_code(
+        entity, previous_frame.f_globals, previous_frame.f_locals
+    )
+
     try:
         root = fragment_fromstring(entity, parser=parser)
     except AssertionError:
         root = XML(entity, parser)
 
-    return _element_to_html(root, previous_frame.f_globals, previous_frame.f_locals)
+    return _element_to_html(
+        root,
+        mapping,
+        previous_frame.f_globals,
+        previous_frame.f_locals,
+    )
