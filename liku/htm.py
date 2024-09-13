@@ -1,13 +1,37 @@
+from collections import deque
 from collections.abc import Iterable
 import inspect
-import re
 from typing import Any
 from liku import HTMLNode, __all__ as liku_exports
 from liku.elements import h
 from lxml.etree import _Element as Element, _Attrib as Attrib, XML
 from lxml.html import fragment_fromstring, XHTMLParser
 
-CODE_RE = re.compile(r"{{(.+?)}}", re.MULTILINE)
+
+def _find_first_code(text: str):
+    stack = 0
+    brackets_buf = deque("", maxlen=2)
+    buf = ""
+    is_inside_block = False
+
+    for c in text:
+        brackets_buf.append(c)
+        if is_inside_block:
+            buf += c
+
+        if "".join(brackets_buf) == "{{":
+            stack += 1
+            brackets_buf.clear()
+            buf = "{{"
+        elif "".join(brackets_buf) == "}}":
+            stack -= 1
+            brackets_buf.clear()
+
+            if stack == 0:
+                return buf
+            stack = max(stack, 0)
+
+        is_inside_block = stack > 0
 
 
 def _process_text_code(
@@ -16,17 +40,17 @@ def _process_text_code(
     locals: dict | None = None,
 ):
     results: list[HTMLNode] = []
-    while match := CODE_RE.search(text):
-        previous = text[: match.start()]
+    while match := _find_first_code(text):
+        previous = text[: text.find(match)]
         if previous:
             results.append(previous)
 
-        result = eval(match.group(1), globals, locals)
+        result = eval(match[2:-2], globals, locals)
         if isinstance(result, Iterable):
             results.extend(result)
         else:
             results.append(result)
-        text = text[match.end() :]
+        text = text[text.find(match) + len(match) :]
 
     if text:
         results.append(text)
