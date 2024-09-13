@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
+from collections.abc import Iterable
 import html as htmllib
-from typing import Literal, TypedDict, overload, TypeAlias
+from typing import Any, Callable, Literal, TypedDict, overload, TypeAlias
 
 from liku.signatures import (
     AnchorHTMLAttributes,
@@ -1445,3 +1446,16 @@ def h[T: TypedDict](
         HTMLElement[T]: Created component
     """
     return GenericComponent.create(tag_name)(props, children, safe)
+
+def For(each: Iterable, children: list[Any]):
+    results = []
+    for child in children:
+        if callable(child):
+            results.append(Fragment(children=list(map(child, each))))
+        else:
+            results.append(child)
+    return Fragment(children=results)
+
+
+def Dynamic[T, **P](component: Callable[P, T], *args: P.args, **kwargs: P.kwargs) -> T:
+    return component(*args, **kwargs)
