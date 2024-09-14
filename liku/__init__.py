@@ -115,4 +115,4 @@ __all__ = [  # noqa: F405
     "wbr",
     "webview",
 ]
-__version__ = "0.1.2-1"
+__version__ = "0.1.5"
